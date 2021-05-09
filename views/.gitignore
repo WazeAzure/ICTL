@@ -1,0 +1,4 @@
+#ignoring all bs template and ndoe modules
+
+node_modules/
+bs-template/
