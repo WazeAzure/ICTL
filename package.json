@@ -1,0 +1,32 @@
+{
+  "name": "ictl",
+  "version": "1.0.0",
+  "description": "sebuah website untuk mengedukasi masyarakat mengenai polusi udara",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WazeAzure/ICTL.git"
+  },
+  "keywords": [
+    "air",
+    "pollution"
+  ],
+  "author": "ICTL grup 1 XIE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WazeAzure/ICTL/issues"
+  },
+  "homepage": "https://github.com/WazeAzure/ICTL#readme",
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "chartjs": "^0.3.24",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "firebase": "^8.4.2",
+    "jquery": "^3.6.0",
+    "popper": "^1.0.1"
+  }
+}
