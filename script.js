@@ -8,17 +8,12 @@ var task = db.ref('hasil-vote');
 
 task.on('value', showData, showErr);
 
-function addYes(){
-    task.update({
-        yes: sumYes+1
-    })
-    updateChartValue()
-}
 
-function addNo(){
-    task.update({
-        no: sumNo+1
-    })
+    } else if(add == 1){
+        task.update({
+            yes: sumYes+1
+        })
+    }
     updateChartValue()
 }
 
