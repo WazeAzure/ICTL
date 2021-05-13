@@ -7,6 +7,10 @@ const path = require('path');
 // serve static files
 app.use(express.static(__dirname + 'public'));
 
+// set engine with ejs
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
 // import body-parser
 const bp = require('body-parser');
 
@@ -34,14 +38,37 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var db = firebase.database();
-var votingHasil = db.ref('hasil-vote');
+var votingHasil = db.ref('hasil-voting');
+
+// init svariable
+let provinceArr = [];
 
 votingHasil.on('value', showData, showError);
 
 function showData(items){
+    let provinceTemp = [];
+    provinceArr = provinceTemp
     items.forEach((item) => {
-        console.log(item.key, item.val());
+        provinceTemp.push([item.val()]);
     })
+    visualize();
+}
+
+function visualize(){
+console.log(provinceArr);
+    let daerah = "aceh";
+    console.log(provinceArr[0][0][daerah])
+    console.log(provinceArr[1][0])
+}
+
+function updateData(daerah, puas, puasNas, act){
+    let anak = parseInt(provinceArr[0][0][daerah][puas])
+    anak = anak + 1
+    let nas = parseInt(provinceArr[1][0][puasNas])
+    nas = nas + 1
+    console.log(anak, nas)
+    votingHasil.child(`daerah/${daerah}/${puas}`).set(anak)
+    votingHasil.child(`nasional/${puasNas}`).set(nas)
 }
 
 function showError(err){
@@ -66,6 +93,17 @@ app.get('/articles', (req, res) =>{
 
 app.get('/form', (req, res) =>{
     res.render('form.ejs');
+})
+
+app.get('/articles/:id', (req, res) => {
+    let filename = 'articleList/artikel-' + req.params.id + '.ejs';
+    res.render(filename);
+})
+
+app.post('/fb', (req, res) => {
+    console.log(req.body);
+    updateData(req.body['u-province'], req.body['u-satis'], req.body['u-satis-n'], req.body['u-act'])
+    res.redirect('/')
 })
 
 // server listen
