@@ -12,7 +12,6 @@
     var waqiLayer = L.tileLayer(WAQI_URL, {
             attribution: WAQI_ATTR
         });
-    var map = L.map('map').setView([51.505, -0.09], 11);
+    var map = L.map('map').setView([-2.0503, 115.3780], 5);
     map.addLayer(osmLayer).addLayer(waqiLayer);
 </script>
-
