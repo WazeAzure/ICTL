@@ -80,7 +80,7 @@ function showError(err){
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
-
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 //express router
 app.get('/', (req, res) =>{
@@ -97,7 +97,7 @@ app.get('/form', (req, res) =>{
 
 app.get('/articles/:id', (req, res) => {
     let filename = 'articleList/artikel-' + req.params.id + '.ejs';
-    res.render(filename);
+    res.render('personal-article.ejs', {id: req.params.id});
 })
 
 app.post('/fb', (req, res) => {
