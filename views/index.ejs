@@ -11,14 +11,20 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
     <!-- Bootstrap4 -->
+    <!--
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"	>
+    
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    -->
+    <!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-
+    -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
 <style>
     * {
         padding: 0;
@@ -39,12 +45,28 @@
                     <!-- ini tempat map -->
                     <%- include('map') %>
                 </div>
-                <div class="content-down container">
-                    <div class="content-down-left container">
-
+                <div class="content-down container row">
+                    <div class="content-down-left container col-sm">
+                        <div class="row align-self-start">
+                            <canvas id="chart-yes-no"></canvas>
+                        </div> 
+                        <div class="row align-self-start">
+                            <select name="daerah" id="namaDaerah">
+                                <% let province = ["Aceh", "Sumatera Utara", "Sumatera Barat", "Riau", "Jambi", "Sumatera Selatan", "Bengkulu", "Lampung", "Kepulauan Bangka Belitung", "Kepulauan Riau", "DKI Jakarta", "Jawa Barat", "Jawa Tengah", "DI Yogyakarta", "Jawa Timur", "Banten", "Bali", "Nusa Tenggara Barat", "Nusa Tenggara Timur", "Kalimantan Barat", "Kalimantan Tengah", "Kalimantan Selatan", "Kalimantan Timur", "Kalimantan Utara", "Sulawesi Utara", "Sulawesi Tengah", "Sulawesi Selatan", "Sulawesi Tenggara", "Gorontalo", "Sulawesi Barat", "Maluku", "Maluku Utara", "Papua", "Papua Barat"]%>  
+                                <% let values = ["aceh", "sumut", "sumbar", "riau", "jambi", "sumsel", "bengkulu", "lampung", "babel", "kepri", "dki", "jabar", "jateng", "diy", "jatim", "banten", "bali", "ntb", "ntt", "kalbar", "kalteng", "kalsel", "kaltim", "kaltara", "sulut", "sulteng", "sulsel", "sultenggara", "gorontalo", "sulbar", "maluku", "malut", "papua", "pabar"]%>
+                                <%for(var i=0;i<34;i++){%>
+                                    <option value="<%=values[i]%>"><%=province[i]%></option>
+                                <%}%>
+                            </select>
+                            <button class="btn btn-primary" onclick="findDaerah()">Search</button>
+                        </div>
+                        <div>
+                            <canvas id="chart-per-daerah"></canvas>
+                            <canvas id="chart-per-daerah-yes-no"></canvas>
+                        </div>
                     </div>
-                    <div class="content-down-right container">
-
+                    <div class="content-down-right container col-sm">
+                        <p>Hello WOrld</p>
                     </div>
                 </div>
             </div>
@@ -55,18 +77,35 @@
     <%- include('template/footer') %>
 
 
-    <!-- scripts -->
+   
     <!-- Chart JS -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-
     <!-- TODO: Add SDKs for Firebase products that you want to use
         https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    <script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBjt-yGcEuvcEI64mTpyS_OSSzfonEZDrc",
+    authDomain: "vote-survey-8635e.firebaseapp.com",
+    databaseURL: "https://vote-survey-8635e-default-rtdb.firebaseio.com",
+    projectId: "vote-survey-8635e",
+    storageBucket: "vote-survey-8635e.appspot.com",
+    messagingSenderId: "100494900275",
+    appId: "1:100494900275:web:5278e86287d7e92f7bb746",
+    measurementId: "G-M4V5PJ1MNX"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 
+    <script src="./static/js/index-script.js"></script>
 </body>
 </html>
