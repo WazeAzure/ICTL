@@ -17,11 +17,19 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./static/css/form-main.css">
 <style>
     * {
         padding: 0;
         margin: 0;
+    }
+    .card {
+        padding: 5vh;
+    }
+    .form-group label {
+        font-weight: bolder;
     }
 </style>
 </head>
@@ -32,7 +40,7 @@
 
     <div class="container-fluid">
         <div class="content">
-            <div class="content container">
+            <div class="content container mt-4 mb-4">
                 <h1>FORMS</h1>
                 <%- include("form-content.ejs") %>
             </div>

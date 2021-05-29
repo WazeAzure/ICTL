@@ -66,9 +66,12 @@ function updateData(daerah, puas, puasNas, act){
     anak = anak + 1
     let nas = parseInt(provinceArr[1][0][puasNas])
     nas = nas + 1
-    console.log(anak, nas)
+    let kata = act
+    console.log("Hi Hello WOrld")
+    console.log(anak, nas, kata)
     votingHasil.child(`daerah/${daerah}/${puas}`).set(anak)
     votingHasil.child(`nasional/${puasNas}`).set(nas)
+    votingHasil.child(`zword`).push(kata)
 }
 
 function showError(err){
@@ -102,7 +105,7 @@ app.get('/articles/:id', (req, res) => {
 
 app.post('/fb', (req, res) => {
     console.log(req.body);
-    updateData(req.body['u-province'], req.body['u-satis'], req.body['u-satis-n'], req.body['u-act'])
+    updateData(req.body['u-province'], req.body['u-satis'], req.body['u-satis-n'], req.body['u-word'])
     res.redirect('/')
 })
 

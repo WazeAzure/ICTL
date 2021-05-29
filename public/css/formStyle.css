@@ -1,0 +1,11 @@
+.card {
+    padding: 5vh;
+    background-color: #fe962d;
+    border-radius: 2vh;
+}
+
+
+h1 {
+    font-style: "Open Sans";
+    font-weight: bold;
+}

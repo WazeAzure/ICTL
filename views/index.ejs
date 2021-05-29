@@ -33,17 +33,19 @@
     
     <!-- ini tempat header -->
     <%- include('template/header.ejs') %>
-
+        <div>
+    <div class="container-fluid mb-4 mt-4">
+        <h1 class="text-center">Welcome to</h1>
+        <h1 class="text-center">AirGenics</h1>
+        <p class="text-center">A Place for Everyone to Get Insight About Air Pollution Quality in Indonesia</p>
+    </div>
+    <%- include('map.ejs') %>
+        </div>
     <div class="container-fluid">
-
         <div class="content">
             <div class="content container">
-                <div class="content-up container">
-                    <!-- ini tempat map -->
-                    <%- include('map') %>
-                </div>
                 <div class="content-down container row">
-                    <div class="content-down-left container col-sm">
+                    <div class="content-down-left container col-5">
                         <div class="row align-self-start">
                             <canvas id="chart-yes-no"></canvas>
                         </div> 
@@ -62,7 +64,7 @@
                             <canvas id="chart-per-daerah-yes-no"></canvas>
                         </div>
                     </div>
-                    <div class="content-down-right container col-sm">
+                    <div class="content-down-right container col-2">
                         <p>Hello WOrld</p>
                     </div>
                 </div>
