@@ -44,28 +44,27 @@
     <div class="container-fluid">
         <div class="content">
             <div class="content container">
-                <div class="content-down container row">
-                    <div class="content-down-left container col-5">
-                        <div class="row align-self-start">
-                            <canvas id="chart-yes-no"></canvas>
-                        </div> 
-                        <div class="row align-self-start">
-                            <select name="daerah" id="namaDaerah">
-                                <% let province = ["Aceh", "Sumatera Utara", "Sumatera Barat", "Riau", "Jambi", "Sumatera Selatan", "Bengkulu", "Lampung", "Kepulauan Bangka Belitung", "Kepulauan Riau", "DKI Jakarta", "Jawa Barat", "Jawa Tengah", "DI Yogyakarta", "Jawa Timur", "Banten", "Bali", "Nusa Tenggara Barat", "Nusa Tenggara Timur", "Kalimantan Barat", "Kalimantan Tengah", "Kalimantan Selatan", "Kalimantan Timur", "Kalimantan Utara", "Sulawesi Utara", "Sulawesi Tengah", "Sulawesi Selatan", "Sulawesi Tenggara", "Gorontalo", "Sulawesi Barat", "Maluku", "Maluku Utara", "Papua", "Papua Barat"]%>  
-                                <% let values = ["aceh", "sumut", "sumbar", "riau", "jambi", "sumsel", "bengkulu", "lampung", "babel", "kepri", "dki", "jabar", "jateng", "diy", "jatim", "banten", "bali", "ntb", "ntt", "kalbar", "kalteng", "kalsel", "kaltim", "kaltara", "sulut", "sulteng", "sulsel", "sultenggara", "gorontalo", "sulbar", "maluku", "malut", "papua", "pabar"]%>
-                                <%for(var i=0;i<34;i++){%>
-                                    <option value="<%=values[i]%>"><%=province[i]%></option>
-                                <%}%>
-                            </select>
-                            <button class="btn btn-primary" onclick="findDaerah()">Search</button>
-                        </div>
-                        <div>
-                            <canvas id="chart-per-daerah"></canvas>
-                            <canvas id="chart-per-daerah-yes-no"></canvas>
-                        </div>
+                <div class="container">
+                    <h1>How Satisfied Are Indonesian People?</h1>
+                    <div class="row align-self-start">
+                        <select name="daerah" id="namaDaerah">
+                            <% let province = ["Aceh", "Sumatera Utara", "Sumatera Barat", "Riau", "Jambi", "Sumatera Selatan", "Bengkulu", "Lampung", "Kepulauan Bangka Belitung", "Kepulauan Riau", "DKI Jakarta", "Jawa Barat", "Jawa Tengah", "DI Yogyakarta", "Jawa Timur", "Banten", "Bali", "Nusa Tenggara Barat", "Nusa Tenggara Timur", "Kalimantan Barat", "Kalimantan Tengah", "Kalimantan Selatan", "Kalimantan Timur", "Kalimantan Utara", "Sulawesi Utara", "Sulawesi Tengah", "Sulawesi Selatan", "Sulawesi Tenggara", "Gorontalo", "Sulawesi Barat", "Maluku", "Maluku Utara", "Papua", "Papua Barat"]%>  
+                            <% let values = ["aceh", "sumut", "sumbar", "riau", "jambi", "sumsel", "bengkulu", "lampung", "babel", "kepri", "dki", "jabar", "jateng", "diy", "jatim", "banten", "bali", "ntb", "ntt", "kalbar", "kalteng", "kalsel", "kaltim", "kaltara", "sulut", "sulteng", "sulsel", "sultenggara", "gorontalo", "sulbar", "maluku", "malut", "papua", "pabar"]%>
+                            <%for(var i=0;i<34;i++){%>
+                                <option value="<%=values[i]%>"><%=province[i]%></option>
+                            <%}%>
+                        </select>
+                        <button class="btn btn-primary" onclick="findDaerah()">Search</button>
                     </div>
-                    <div class="content-down-right container col-2">
-                        <p>Hello WOrld</p>
+                    <div>
+                        <canvas id="chart-per-daerah"></canvas>
+                        <canvas id="chart-per-daerah-yes-no"></canvas>
+                    </div>
+                </div>
+                <div class="container">
+                    <h1>Have Indonesian People Participated?</h1><br>
+                    <div class="row align-self-start">
+                        <canvas id="chart-yes-no"></canvas>
                     </div>
                 </div>
             </div>

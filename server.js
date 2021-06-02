@@ -59,16 +59,36 @@ console.log(provinceArr);
     let daerah = "aceh";
     console.log(provinceArr[0][0][daerah])
     console.log(provinceArr[1][0])
+    console.log("Hi " + provinceArr[1][0])
 }
-
-function updateData(daerah, puas, puasNas, act){
+let values = ["aceh", "sumut", "sumbar", "riau", "jambi", "sumsel", "bengkulu", "lampung", "babel", "kepri", "dki", "jabar", "jateng", "diy", "jatim", "banten", "bali", "ntb", "ntt", "kalbar", "kalteng", "kalsel", "kaltim", "kaltara", "sulut", "sulteng", "sulsel", "sultenggara", "gorontalo", "sulbar", "maluku", "malut", "papua", "pabar"]
+function updateData(daerah, puas, puasNas, act, actions){
     let anak = parseInt(provinceArr[0][0][daerah][puas])
     anak = anak + 1
     let nas = parseInt(provinceArr[1][0][puasNas])
     nas = nas + 1
     let kata = act
-    console.log("Hi Hello WOrld")
-    console.log(anak, nas, kata)
+    let yesNo = 0;
+    if(actions == "yes"){
+        yesNo = parseInt(provinceArr[0][0][daerah].yes);
+        yesNo += 1
+        votingHasil.child(`daerah/${daerah}/yes`).set(yesNo)
+        let sum = 0;
+        values.forEach((i) => {
+            sum += parseInt(provinceArr[0][0][i].yes)
+        })
+        votingHasil.child(`nasional/yes`).set(sum)
+    } else {
+        yesNo = parseInt(provinceArr[0][0][daerah].no);
+        yesNo += 1;
+        votingHasil.child(`daerah/${daerah}/no`).set(yesNo)
+        let sum = 0;
+        values.forEach((i) => {
+            sum += parseInt(provinceArr[0][0][i].no)
+        })
+        votingHasil.child(`nasional/no`).set(sum)
+    }
+    votingHasil.child(`daerah/${daerah}/`)
     votingHasil.child(`daerah/${daerah}/${puas}`).set(anak)
     votingHasil.child(`nasional/${puasNas}`).set(nas)
     votingHasil.child(`zword`).push(kata)
@@ -105,7 +125,7 @@ app.get('/articles/:id', (req, res) => {
 
 app.post('/fb', (req, res) => {
     console.log(req.body);
-    updateData(req.body['u-province'], req.body['u-satis'], req.body['u-satis-n'], req.body['u-word'])
+    updateData(req.body['u-province'], req.body['u-satis'], req.body['u-satis-n'], req.body['u-word'], req.body['u-act'])
     res.redirect('/')
 })
 
