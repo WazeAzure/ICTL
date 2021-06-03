@@ -20,33 +20,49 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-    
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <!--<link rel="stylesheet" href="./css/bootstrap.min.css"> -->
 <style>
     * {
         padding: 0;
         margin: 0;
     }
+	.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+	.overlay {
+	background-color: rgba(255,255,255,0.5);
+}	
+
 </style>
 </head>
 <body>
     
     <!-- ini tempat header -->
     <%- include('template/header.ejs') %>
-        <div>
-    <div class="container-fluid mb-4 mt-4">
-        <h1 class="text-center">Welcome to</h1>
-        <h1 class="text-center">AirGenics</h1>
-        <p class="text-center">A Place for Everyone to Get Insight About Air Pollution Quality in Indonesia</p>
+        <div id="opening-up">
+    <div class="container-fluid" style="height: 100vh; background-image: url('/static/images/bg-air.jpeg'); background-repeat: no-repeat; background-size: cover;">
+	<div class="overlay centered">
+        <h1 class="text-center" style="font-size: 8vw;">Welcome to</h1>
+        <h1 class="text-center" style="font-size: 8vw;">AirGenics</h1>
+        <p class="text-center" style="font-size: 3vw;">A Place for Everyone to Get Insight About Air Pollution Quality in Indonesia</p>
+	</div>
     </div>
-    <%- include('map.ejs') %>
         </div>
+<div class="container" id="tempat-map">
+    <%- include('map.ejs') %>
+</div>
     <div class="container-fluid">
         <div class="content">
             <div class="content container">
                 <div class="container">
                     <h1>How Satisfied Are Indonesian People?</h1>
                     <div class="row align-self-start">
+                        <canvas id="chart-per-daerah-yes-no"></canvas>
                         <select name="daerah" id="namaDaerah">
                             <% let province = ["Aceh", "Sumatera Utara", "Sumatera Barat", "Riau", "Jambi", "Sumatera Selatan", "Bengkulu", "Lampung", "Kepulauan Bangka Belitung", "Kepulauan Riau", "DKI Jakarta", "Jawa Barat", "Jawa Tengah", "DI Yogyakarta", "Jawa Timur", "Banten", "Bali", "Nusa Tenggara Barat", "Nusa Tenggara Timur", "Kalimantan Barat", "Kalimantan Tengah", "Kalimantan Selatan", "Kalimantan Timur", "Kalimantan Utara", "Sulawesi Utara", "Sulawesi Tengah", "Sulawesi Selatan", "Sulawesi Tenggara", "Gorontalo", "Sulawesi Barat", "Maluku", "Maluku Utara", "Papua", "Papua Barat"]%>  
                             <% let values = ["aceh", "sumut", "sumbar", "riau", "jambi", "sumsel", "bengkulu", "lampung", "babel", "kepri", "dki", "jabar", "jateng", "diy", "jatim", "banten", "bali", "ntb", "ntt", "kalbar", "kalteng", "kalsel", "kaltim", "kaltara", "sulut", "sulteng", "sulsel", "sultenggara", "gorontalo", "sulbar", "maluku", "malut", "papua", "pabar"]%>
@@ -56,9 +72,9 @@
                         </select>
                         <button class="btn btn-primary" onclick="findDaerah()">Search</button>
                     </div>
-                    <div>
-                        <canvas id="chart-per-daerah"></canvas>
-                        <canvas id="chart-per-daerah-yes-no"></canvas>
+                    <div class="row">
+                        <canvas class="col-sm" id="chart-per-daerah"></canvas>
+                        <canvas class="col-sm" id="nasionalYesNo"></canvas>
                     </div>
                 </div>
                 <div class="container">

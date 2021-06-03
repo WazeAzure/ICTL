@@ -37,8 +37,8 @@ var nationalChart = new Chart(ctx, {
             label: 'My Data Sets',
             data: [0, 0],
             backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)'
+                'rgb(54, 162, 235)',
+                'rgb(255, 99, 132)'
             ],
             hoverOffset: 4
         }]
@@ -97,15 +97,19 @@ var daerahChart = new Chart(ctxD, {
         }
     }
 })
-var ctxYN = document.getElementById('chart-per-daerah-yes-no')
+
+var ctxYN = document.getElementById('nasionalYesNo')
 var daerahChartYesNo = new Chart(ctxYN, {
-    type: 'bar',
+    type: 'doughnut',
     data: {
-        labels: ['yes', 'no'],
+        labels: ['sangat tidak puas', 'tidak puas', 'biasa saja', 'puas', 'sangat puas'],
         datasets: [{
             label: 'My Data Sets',
-            data: [0, 0],
+            data: [0,0,0,0,0],
             backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 99, 132)',
                 'rgb(255, 99, 132)',
                 'rgb(54, 162, 235)'
             ],
@@ -137,8 +141,18 @@ function showDaerah(daerah){
     for(var i=1;i<=5;i++){
         tempArr.push(provinceArr[0][0][daerah][i])
     }
-    daerahChartYesNo.data.datasets[0].data = [provinceArr[0][0][daerah]['yes'], provinceArr[0][0][daerah]['no']]
+
+    let tempArrYesNo = [];
+    for(var i=1;i<=5;i++){
+        tempArrYesNo.push(provinceArr[1][0][i])
+    }
+
+    //daerahChartYesNo.data.datasets[0].data = [provinceArr[0][0][nasional]['yes'], provinceArr[0][0][nasional]['no']]
+    daerahChartYesNo.data.datasets[0].data = tempArrYesNo
     daerahChartYesNo.update()
+
     daerahChart.data.datasets[0].data = tempArr
     daerahChart.update()
 }
+
+// tempat untuk animasi slide
