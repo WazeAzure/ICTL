@@ -1,0 +1,52 @@
+<div class="card">
+    <form method="post" action="fb">
+        <div class="form-group">
+            <label for="u-name">Apa Nama Anda?</label><br>
+            <input type="text" class="form-control" name="u-name" required>
+        </div>
+        <div class="form-group">
+            <label for="u-age">Berapa Umur Anda?</label><br>
+            <select name="u-age" required>
+            <%for(var i=1;i<200;i++){%>
+            <option><%=i%></option>
+            <%}%>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="u-province">Anda Berasal dari Provinsi Apa?</label><br>
+            <select name="u-province" required>
+            <% let province = ["Aceh", "Sumatera Utara", "Sumatera Barat", "Riau", "Jambi", "Sumatera Selatan", "Bengkulu", "Lampung", "Kepulauan Bangka Belitung", "Kepulauan Riau", "DKI Jakarta", "Jawa Barat", "Jawa Tengah", "DI Yogyakarta", "Jawa Timur", "Banten", "Bali", "Nusa Tenggara Barat", "Nusa Tenggara Timur", "Kalimantan Barat", "Kalimantan Tengah", "Kalimantan Selatan", "Kalimantan Timur", "Kalimantan Utara", "Sulawesi Utara", "Sulawesi Tengah", "Sulawesi Selatan", "Sulawesi Tenggara", "Gorontalo", "Sulawesi Barat", "Maluku", "Maluku Utara", "Papua", "Papua Barat"]%>  
+            <% let values = ["aceh", "sumut", "sumbar", "riau", "jambi", "sumsel", "bengkulu", "lampung", "babel", "kepri", "dki", "jabar", "jateng", "diy", "jatim", "banten", "bali", "ntb", "ntt", "kalbar", "kalteng", "kalsel", "kaltim", "kaltara", "sulut", "sulteng", "sulsel", "sultenggara", "gorontalo", "sulbar", "maluku", "malut", "papua", "pabar"]%>
+            <%for(var i=0;i<34;i++){%>
+                <option value="<%=values[i]%>"><%=province[i]%></option>
+            <%}%>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="u-satis">Seberapa Puas Anda Mengenai Kualitas Udara di Daerah Anda?</label><br>
+            <select name="u-satis" required>
+            <%for(var i=1;i<=5;i++){%>
+            <option><%=i%></option>
+            <%}%>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="u-satis-n">Menurut anda seberapa bagus kualitas udara indonesia secara keseluruhan?</label><br>
+            <select name="u-satis-n" required>
+            <%for(var i=1;i<=5;i++){%>
+            <option><%=i%></option>
+            <%}%>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="u-act">Apakah Anda Sudah Mulai Berkontribusi?</label><br>
+            <input type="radio" name="u-act" value="yes" required>Sudah
+            <input type="radio" name="u-act" value="no" required>Belum
+        </div>
+        <div class="form-group">
+            <label for="u-word">Berikan 1 kata untuk mendeskripsikan kualitas udara indonesia</label>
+            <input type="text" class="form-control" name="u-word" required>
+        </div>
+        <input type="submit" class="btn btn-primary">
+    </form> 
+</div>

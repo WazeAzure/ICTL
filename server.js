@@ -110,17 +110,34 @@ app.get('/', (req, res) =>{
     res.render('index.ejs');
 })
 
+app.get('/id', (req, res) =>{
+   res.render('index-id.ejs');
+})
+
 app.get('/articles', (req, res) =>{
     res.render('articles.ejs');
+})
+
+app.get('/id/articles', (req, res) => {
+   res.render('articles-id.ejs');
 })
 
 app.get('/form', (req, res) =>{
     res.render('form.ejs');
 })
 
+app.get('/id/form', (req, res) => {
+   res.render('form-id.ejs');
+})
+
 app.get('/articles/:id', (req, res) => {
     let filename = 'articleList/artikel-' + req.params.id + '.ejs';
     res.render('personal-article.ejs', {id: req.params.id});
+})
+
+app.get('/id/articles/:id', (req, res) => {
+    let filename = 'articleList/artikel-id-' + req.params.id + '.ejs';
+    res.render('personal-article-id.ejs', {id: req.params.id});
 })
 
 app.post('/fb', (req, res) => {

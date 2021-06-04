@@ -45,13 +45,14 @@ var nationalChart = new Chart(ctx, {
     },
     options: {
         responsive: true,
+	maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'top',
             },
             title: {
                 display: true,
-                text: 'Chart.js Bar Chart'
+                text: 'People Who Have Taken an Act'
             }
         }
     }
@@ -86,13 +87,14 @@ var daerahChart = new Chart(ctxD, {
     },
     options: {
         responsive: true,
+	maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'top',
             },
             title: {
                 display: true,
-                text: 'Chart.js Bar Chart'
+                text: 'Provinces\' Air Quality Satisfaction'
             }
         }
     }
@@ -107,24 +109,24 @@ var daerahChartYesNo = new Chart(ctxYN, {
             label: 'My Data Sets',
             data: [0,0,0,0,0],
             backgroundColor: [
+                'rgb(143, 11, 11)',
+                'rgb(245, 12, 12)',
+                'rgb(237, 220, 31)',
                 'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 99, 132)',
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)'
+                'rgb(36, 113, 237)'
             ],
             hoverOffset: 4
         }]
     },
     options: {
-        responsive: true,
+	maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'top',
             },
             title: {
                 display: true,
-                text: 'Chart.js Bar Chart'
+                text: 'National\'s Air Quality Satisfaction'
             }
         }
     }
@@ -156,3 +158,5 @@ function showDaerah(daerah){
 }
 
 // tempat untuk animasi slide
+ScrollReveal().reveal('.overlay', {duration: 1000});
+ScrollReveal().reveal('.tempat-map', {duration: 1000});
